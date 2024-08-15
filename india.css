@@ -1,0 +1,232 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    height:100%;
+    width:100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+--currentColor:#000080;
+}
+
+.custom-shape-divider-top-1723699892 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1723699892 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 22rem;
+}
+
+.custom-shape-divider-top-1723699892 .shape-fill {
+    fill: #F16B25;
+}
+
+
+.custom-shape-divider-bottom-1723699977 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1723699977 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 22rem;
+}
+
+.custom-shape-divider-bottom-1723699977 .shape-fill {
+    fill: #287E39;
+}
+
+
+  .chakra-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+  .chakra{
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:14rem;
+    height:14rem;
+    border:8px solid var(--currentColor);
+    border-radius: 50%;
+    transform: rotateY(180deg);
+    animation: outer .5s cubic-bezier(0.25,1,0.7,1.3),
+    rotate 30s linear infinite ;
+    z-index: 100;
+}
+.chakra .spikes,
+.chakra .spikes .spike{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events: none;
+}
+.chakra .spikes .spike{
+    transform:rotate(calc(15deg * var(--i)));
+}
+.chakra .spikes .spike::before{
+    content: '';
+    position:absolute;
+    width:1rem;
+    height:1rem;
+    background:var(--currentColor);
+    border-radius: 50%;
+    top:-4%;
+    left:calc(50% - 4%);
+    animation: circle 2s linear calc(-0.05s * var(--i)) ;
+}
+.chakra .spikes .spike::after{
+    content:'';
+    position:absolute;
+    width:4%;
+    height:50%;
+    background-color: var(--currentColor);
+    top:-8px;
+    left:calc(50% - 5px);
+    transform-origin:bottom;
+    transform:rotate(7.5deg);
+    clip-path: polygon(50% 5%,100% 50%, 50% 95%,0% 50%);
+    animation: spike 2s linear calc(-0.05s * var(--i)) 
+
+}
+.chakra::after{
+    content: '';
+    position:absolute;
+    width:12%;
+    height:12%;
+    background-color: var(--currentColor);
+    top:calc(50% -12%);
+    border-radius: 50%;
+}
+
+/* keyframes */
+
+@keyframes outer {
+    0%{
+        transform: rotateY(180%) scale(0);
+    }
+}
+
+@keyframes circle {
+    0%,90%{
+        opacity:0;
+    }
+}
+@keyframes spike {
+    0%,90%{
+        opacity:0;
+        clip-path: polygon(50% 90% ,100% 90%,90% 95%,0 50%);
+    }
+}
+@keyframes rotate {
+   to{
+transform:rotatey(180deg) rotate(360deg);
+    }
+}
+
+.wishes-text {
+    position: absolute;
+    bottom: 15%; /* Adjust this value to move it up or down */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 15; /* Ensure it's above the bottom divider but below the chakra */
+    width: 100%;
+}
+
+.wishes-text .word {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    /* color: #000080; */
+    background-color: transparent;
+    color: #328538;
+    -webkit-text-fill-color:#2e3063;
+    -webkit-text-stroke-color: #f48823;
+    -webkit-text-stroke-width: 0.03rem;
+    margin: 0 10px;
+    /* text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5); */
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: calc(var(--j) * 0.1s);
+    opacity: 0;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media screen  and (min-width :1024px ){
+    .wishes-text .word {
+        font-size: 3rem;
+    }
+}
+.music-button {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    min-width: 6rem;
+    height: 3rem;
+   /* Colors */
+   background: linear-gradient(to right, #FF9933, #FFFFFF, #138808);
+   color: #000080;
+
+    cursor: pointer;
+    z-index: 20;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 0.5rem;
+
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.music-button span {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000080;
+    position: relative;
+    z-index: 1;
+}
+
+.music-button:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.music-button:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
